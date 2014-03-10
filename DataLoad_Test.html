@@ -16,7 +16,7 @@
 			{
 			font-family: times, Times New Roman, times-roman, georgia, serif;
 			font-size: 14px;
-			line-height: 30px;
+			line-height: 25px;
 			letter-spacing: -1px;color: #444;
 			}
 		</style>
@@ -29,9 +29,9 @@
 				//Loops through the Object array
 				for ( var i = 0; i < data.feed.entry.length; i++ ){
 					//Troubleshooting Resource
-					//console.log(data.feed.entry[i]['gsx$name']['$t'])
+					//console.log(data.feed.entry)
 					$(document).ready(function () {
-						$("body").append("<div>" + data.feed.entry[i]['gsx$name']['$t'] + " " + data.feed.entry[i]['gsx$actuallongitude']['$t'] + "</div>");
+						$("body").append('<div><a href=\"' + data.feed.entry[i]['gsx$url']['$t'] + '\">' + data.feed.entry[i]['gsx$name']['$t'] + "</a></div>");
 					});
 				}
 			});
