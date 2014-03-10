@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	
+		<meta charset="utf-8">
+		<title>jQuery Get-n-Print Example</title>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<style type="text/css">
+				/* Impromptu Styles Here */
+			body
+			{
+			background-color:#ecf0f1;
+			}
+			div
+			{
+			font-family: times, Times New Roman, times-roman, georgia, serif;
+			font-size: 14px;
+			line-height: 30px;
+			letter-spacing: -1px;color: #444;
+			}
+		</style>
+		
+    </head>
+	<body>
+		<script type="text/javascript">
+			// This is the jQuery method loads JSON-encoded data from the server using a GET HTTP request. Replacing the 
+			$.getJSON("http://cors.io/spreadsheets.google.com/feeds/list/0Ajys_D_Kd9XYdG9LRVpIanludjl2RTJBYl9waTVvOGc/od6/public/values?alt=json", function(data) {
+				//Loops through the Object array
+				for ( var i = 0; i < data.feed.entry.length; i++ ){
+					//Troubleshooting Resource
+					//console.log(data.feed.entry[i]['gsx$name']['$t'])
+					$(document).ready(function () {
+						$("body").append("<div>" + data.feed.entry[i]['gsx$name']['$t'] + " " + data.feed.entry[i]['gsx$actuallongitude']['$t'] + "</div>");
+					});
+				}
+			});
+				
+        </script>
+    </body>
+</html>
