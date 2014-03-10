@@ -24,13 +24,14 @@
     </head>
 	<body>
 		<script type="text/javascript">
-			// This is the jQuery method loads JSON-encoded data from the server using a GET HTTP request. Replacing the 
+			// This jQuery method loads JSON-encoded data from the Google Drive server using a GET HTTP request.
 			$.getJSON("http://cors.io/spreadsheets.google.com/feeds/list/0Ajys_D_Kd9XYdG9LRVpIanludjl2RTJBYl9waTVvOGc/od6/public/values?alt=json", function(data) {
 				//Loops through the Object array
 				for ( var i = 0; i < data.feed.entry.length; i++ ){
 					//Troubleshooting Resource
 					//console.log(data.feed.entry)
 					$(document).ready(function () {
+						//Appends div's to the body that contain the name of the intersection and a link to the traffic camera located there. 
 						$("body").append('<div><a href=\"' + data.feed.entry[i]['gsx$url']['$t'] + '\">' + data.feed.entry[i]['gsx$name']['$t'] + "</a></div>");
 					});
 				}
