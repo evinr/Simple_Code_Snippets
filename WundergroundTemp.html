@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	
+		<meta charset="utf-8">
+		<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+		<title>Simple Rocklin Temp Dashboard</title>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+		<style type="text/css">
+				/* Impromptu Styles Here */
+			body
+			{
+			background-color:#ecf0f1;
+			margin:0; padding:0;}
+			div
+			{
+			font-family: times, Times New Roman, times-roman, georgia, serif;
+			font-size: 48px;
+			line-height: 45px;
+			letter-spacing: 2px;color: #444;}
+			#map 
+			{ position:absolute; top:0; bottom:0; width:100%; }
+		</style>
+		
+    </head>
+	<body>
+		<script type="text/javascript">				
+			// This jQuery method loads JSON-encoded data from the WunderGround using a GET HTTP request.
+			$.getJSON("http://www.corsproxy.com/api.wunderground.com/api/360e40e9b7ee6a94/conditions/q/CA/Rocklin.json", function(data) {
+					//Troubleshooting Resources
+					var temppp = data.current_observation.temp_f;
+					//console.log(temppp);
+
+					$(document).ready(function () {
+						//Appends div's with the current temp 
+						$("body").append('<div>' + temppp + "°F</div>");
+					});
+			});
+        </script>
+    </body>
+</html>
