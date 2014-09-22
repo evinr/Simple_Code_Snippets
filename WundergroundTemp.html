@@ -12,16 +12,16 @@
 				/* Impromptu Styles Here */
 			body
 			{
-			background-color:#ecf0f1;
+			background-color:#2c3e50;
 			margin:0; padding:0;}
 			div
 			{
 			font-family: times, Times New Roman, times-roman, georgia, serif;
 			font-size: 48px;
 			line-height: 45px;
-			letter-spacing: 2px;color: #444;}
-			#map 
-			{ position:absolute; top:0; bottom:0; width:100%; }
+			letter-spacing: 2px;
+			color: #ecf0f1;}
+
 		</style>
 		
     </head>
@@ -33,6 +33,7 @@
 					var temppp = data.current_observation.temp_f;
 					//console.log(temppp);
 
+					
 					$(document).ready(function () {
 						//Appends div's with the current temp 
 						$("body").append('<div>' + temppp + "°F</div>");

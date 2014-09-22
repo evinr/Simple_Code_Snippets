@@ -1,0 +1,127 @@
+<html>
+<head>
+    <link rel="stylesheet" href="estilo.css"/>
+    <meta charset="UTF-8"/>
+	<title>Simple Metro Tiles Weather Dashboard</title>
+	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	
+	<style> 
+ 
+	body{
+		font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;;
+		background: #2c3e50;
+		color: #fff;
+		padding:20px;
+		letter-spacing: 5px;
+	}
+	 
+	.pagina{
+		width:auto;
+		height:auto;     
+	}
+	 
+	.linha{
+		width:auto;
+		padding:5px;
+		height:auto;
+		display:table;      
+	}
+	.tile{
+    height:200px;   
+    width:200px;  
+    float:left;
+    margin:5px 5px 5px 5px;
+    padding:2px;
+	font-size: 48px;
+	line-height: 45px;
+	letter-spacing: 5px;
+	color: #ecf0f1;
+	}
+	 
+	.longTile{
+		width:415px;
+	}
+	.temperature{
+    background:#16a085;
+	text-indent: 5px;
+	text-align:right;
+	
+	}
+	 
+	.purple{
+		background:#8e44ad; 
+	font-size: 36px;
+		
+	}
+	 
+	.blue{
+		background:#3498db;
+		font-size: 24px;
+
+	}
+	 
+	h1{
+	text-indent: 10px;
+	}
+	
+	.pressure{
+    background:#16a085;
+	font-size: 200px;
+	line-height: 175px;
+	text-indent: 45px;
+	vertical-align: middle;
+	}
+	
+	}
+	</style>
+</head>
+<body>
+    <h1>Simple Weather Dashboard</h1>
+		<script type="text/javascript">				
+			// This jQuery method loads JSON-encoded data from the WunderGround using a GET HTTP request.
+			$.getJSON("http://www.corsproxy.com/api.wunderground.com/api/360e40e9b7ee6a94/conditions/q/CA/Rocklin.json", function(data) {
+					//Troubleshooting Resource
+					//console.log(res);
+					
+					//swaps the gif to a better looking version
+					var str = data.current_observation.icon_url;
+					console.log(str);
+
+					var res = str.replace('\/i\/c\/k', '\/i\/c\/v1'); 
+					var image = res.replace('\.gif', '\.svg'); 
+					
+					var windString = data.current_observation.wind_string;
+					var cleanWind = windString.replace('From', 'Winds from');
+					
+					var obsString = data.current_observation.observation_time;
+					var cleanObs = obsString.replace('Last Updated', 'last updated');
+
+console.log(image);
+					$(document).ready(function () {
+						//Opens the main div
+						$("body").append('<div class="pagina"><div class="linha">');
+						
+						//Temp
+						$("body").append('<div class="tile temperature"><span class="temp">' + data.current_observation.temp_f + ' °F ' + '<img src="' +image + '">' + data.current_observation.weather + '</span><br/></div>');
+						//wind
+						$("body").append('<div class="tile longTile blue"><span class="email">' + cleanWind + ', ' + cleanObs + ' </span><br/></div>');
+						//humidity
+						$("body").append('<div class="tile  purple"><span class="email">' + data.current_observation.relative_humidity + ' RH</span><br/></div>');
+						//pressure
+						$("body").append('<div class="tile pressure"><span class="email">' + data.current_observation.pressure_trend + ' </span><br/></div>');
+						//dewpoint
+						$("body").append('<div class="tile blue"><span class="email">' + data.current_observation.dewpoint_f + ' °F Dewpoint</span><br/></div>');
+						//visibility
+						$("body").append('<div class="tile  purple"><span class="email">' + data.current_observation.visibility_mi + ' Miles Visibility</span><br/></div>');
+
+
+						//Closes the main div
+						$("body").append('</div></div>');
+					});
+			});
+
+        </script>
+</body>
+</html>
