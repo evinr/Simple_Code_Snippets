@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Basic Data Table</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+    <!-- web font  -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Poiret+One' rel='stylesheet' type='text/css'>
+    <!-- jQuery needs to be loaded first -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <style>
+    /* Sticky footer styles
+    -------------------------------------------------- */
+    html {
+      position: relative;
+      min-height: 100%;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+    body {
+      /* Margin bottom by footer height */
+      margin-bottom: 60px;
+      background: rgba(149, 165, 166,1.0);
+
+
+    }
+    .footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      /* Set the fixed height of the footer here */
+      height: 60px;
+      background-color: #f5f5f5;
+    }
+
+    /* Custom page CSS
+    --------------------------------------------------#ecf0f1 */
+    h1, h2, h3, h4, h5, h6, legend {
+  margin:0;
+  font-weight: 300;
+  font-family: 'Open Sans', sans-serif;
+  }
+
+  h1 {
+    font-size: 80px;
+  }
+
+  p{
+    font-family: 'Poiret One', cursive;
+    font-size: 150%;
+  }
+
+ .overlay {
+    margin-top: 50px;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(rgba(149, 165, 166,1.0));
+    z-index: -1;
+    color:#ecf0f1;
+  }
+    /* Not required for template or sticky footer method. */
+    .footer-text{
+      margin-top:20px;
+    }
+    .content{
+      margin-top: 50px;
+      bacground: rgba(52, 152, 219,1.0);
+
+    }
+    .navbar-color{
+      background-color: #16a085;
+      border: #1abc9c;
+    }
+    .navbar-inverse .navbar-brand {
+    color: #333;
+}
+a{
+  color: #16a085
+}
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-color navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Basic Data Table</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+<!-- Begin page content -->
+<nav class="navbar navbar-color navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Basic Data Table</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+<!-- Begin page content -->
+<div class="container content">
+  <div class="col-md-12 text-center">
+    <h1>Basic Data Tables</h1>
+    <p>This basic page is a down and dirty way to visualize JSON data.</p>
+  </div>
+
+  <!-- Begin Data Table -->
+  <table id="example" class="display" width="100%" cellspacing="0">
+    <thead>
+      <tr>
+        <th>City Name</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+
+    <tfoot>
+      <tr>
+        <th>City Name</th>
+        <th>Result</th>
+      </tr>
+    </tfoot>
+    <tbody id="here_table">
+    </tbody>
+  </table>
+</div>
+<!--   </div> End Data Table -->
+
+<!-- End page content -->
+    <footer class="footer">
+      <div class="container">
+        <div class="col-lg-4 col-lg-offset-4">
+          <h3 class="text-muted text-center footer-text"> <a href="http://evinrevello.com/">2014 Evin Revello</a></h3>
+        </div>
+      </div>
+    </footer>
+    <!-- Bootstrap JavaScript Files -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.js"></script>
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <!-- Datatables that make the tables look hella clean -->
+    <script src="https://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+    // This jQuery method loads JSON-encoded data from the WunderGround using a GET HTTP request.
+    $.getJSON("./node_result.json", function(data) {
+
+      $(document).ready(function () {
+        //Appends div's with the current temp
+        var content = "";
+        for(i=0; i<412; i++){
+          content += '<tr><td>' +  data["city_name"][i] + '</td><td>' +  data["results"][i] + '</td></tr>';
+        }
+        $('#here_table').append(content);
+        //Applies the Data Table Function
+        $('#example').DataTable();
+      });
+    });
+    </script>
+  </body>
+</html>
