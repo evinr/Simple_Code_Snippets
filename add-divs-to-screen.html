@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Div Adder</title>
+<script src="../Love-Staring-Machine/Browser/jquery-1.11.0.min.js"></script>
+<style>
+form {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}  
+</style>
+</head>
+<body>
+<form id="form">
+	<input type="text" placeholder="Type to add div's" onkeypress="main()" name="name" id="p1">
+</form>
+<span></span>
+</body>
+<script>
+var count = 0;
+var vCount = 0;
+var hCount = 1;
+var upCount = 1;
+var direction = "d"
+var body = document.getElementsByTagName('body');
+var offsetValue = 0;
+var idValue = 'element0';
+
+
+document.getElementById('p1').focus();
+
+
+function isWithinViewport(idValue) {
+	var el = document.getElementById(idValue);
+	var elem = el.getBoundingClientRect();
+
+	if (direction === "d") {
+
+	    var isVisible = elem.bottom < window.innerHeight;
+
+	    if ( !isVisible ) {
+	    	el.parentNode.removeChild(el);
+	    	direction = "r";
+	    	lastElement = count - 1;
+	    	var newValue = document.getElementById('element' + lastElement);
+	    	offsetValue = newValue.getBoundingClientRect().top;
+	    	document.body.innerHTML += rightHorizontalHTML();
+	    }
+    }
+
+    else if (direction === "r") {
+
+	    var isVisible = elem.right < window.innerWidth;
+
+	    if ( !isVisible ) {
+	    	el.parentNode.removeChild(el);
+	    	direction = "u";
+	    	lastElement = count - hCount - 1;
+	    	var newValue = document.getElementById('element' + lastElement);
+	    	console.log(newValue);
+	    	offsetValue = newValue.getBoundingClientRect().top;
+	    	console.log(offsetValue);
+	    	vCount --;
+	    	document.body.innerHTML += upVerticalHTML();
+	    }
+    }
+
+    else if (direction === "u") {
+
+	    var isVisible = elem.top < 0;
+
+	    lastElement = count - hCount - upCount;
+	    var newValue = document.getElementById('element' + lastElement);
+	    console.log(newValue);
+	    offsetValue = newValue.getBoundingClientRect().top;
+	    console.log(offsetValue);
+
+	    if ( !isVisible ) {
+	    	el.parentNode.removeChild(el);
+	    	direction = "l";
+	    	lastElement = count - 1;
+	    	var newValue = document.getElementById('element' + lastElement);
+	    	offsetValue = newValue.getBoundingClientRect().top;
+	    	hCount --;
+	    	document.body.innerHTML += leftHorizontalHTML();
+	    }
+    }
+    // else if (direction === "l") {
+
+	   //  var isVisible = elem.left < window.innerWidth;
+
+	   //  if ( !isVisible ) {
+	   //  	el.parentNode.removeChild(el);
+	   //  	direction = "";
+	   //  	lastElement = count - 1;
+	   //  	var newValue = document.getElementById('element' + lastElement);
+	   //  	offsetValue = newValue.getBoundingClientRect().top;
+	   //  	hCount --;
+	   //  	document.body.innerHTML += leftHorizontalHTML();
+	   //  }
+    // }
+}
+
+function downVerticalHTML (){
+	return '<div style="position:absolute;width:5vw;height:5vw;top:' + 6 * vCount + 'vw;margin:0.3vw;background:pink;"id=' + idValue +'></div>';
+}
+
+function rightHorizontalHTML (){
+	return '<div style="position:absolute;width:5vw;height:5vw;left:' + 6 * hCount + 'vw;top:' + offsetValue  +'px;margin:0.3vw;background:red;"id=' + idValue +'></div>';
+}
+
+function upVerticalHTML (){
+	return '<div style="position:absolute;width:5vw;height:5vw;top:' + offsetValue  + 'px;right:0.5vw;margin:0.3vw;background:purple;"id=' + idValue +'></div>';
+}
+
+function leftHorizontalHTML (){
+	return '<div style="position:absolute;width:5vw;height:5vw;right:' + 6 * hCount + 'vw;top:' + (offsetValue - 5) +'px;margin:0.3vw;background:green;"id=' + idValue +'></div>';
+}
+
+function main() {
+	idValue = 'element' + count;
+
+	if (direction === "d") {
+		document.body.innerHTML += downVerticalHTML();
+		vCount ++;
+		isWithinViewport(idValue);
+	}
+	else if (direction === "r") {
+		document.body.innerHTML += rightHorizontalHTML();
+		hCount ++;
+		isWithinViewport(idValue);
+	}
+
+	else if (direction === "u") {
+		document.body.innerHTML += upVerticalHTML();
+		hCount --;
+		isWithinViewport(idValue);
+	}
+	else if (direction === "l") {
+		document.body.innerHTML += rightHorizontalHTML();
+		hCount --;
+		isWithinViewport(idValue);
+	}
+	else {
+		alert("The screen is full");
+	}
+    
+    count ++;
+    document.getElementById('p1').focus();
+
+    // optional collision detection: http://jsfiddle.net/Emy49/    
+}
+</script>
+</html>
