@@ -59,7 +59,7 @@ function isWithinViewport(idValue) {
 	    	direction = "u";
 	    	lastElement = count - hCount - 1;
 	    	var newValue = document.getElementById('element' + lastElement);
-	    	console.log(newValue);
+	    	console.log("lastElement: " +lastElement);
 	    	offsetValue = newValue.getBoundingClientRect().top;
 	    	console.log(offsetValue);
 	    	vCount --;
@@ -68,18 +68,18 @@ function isWithinViewport(idValue) {
     }
 
     else if (direction === "u") {
-
-	    var isVisible = elem.top < 0;
-
-	    lastElement = count - hCount - upCount;
-	    var newValue = document.getElementById('element' + lastElement);
-	    console.log(newValue);
+    	//needs to depend on the opposite side of the screens divs using vCount. When vCount is 0 then set isVisible to false.
+	    //var isVisible = elem.top > 0;
+	    vCount ? null : isVisible=false;
+	    lastElement = count - 1;
+	    var newValue = document.getElementById('element' + vCount);
+	    vCount--;
 	    offsetValue = newValue.getBoundingClientRect().top;
-	    console.log(offsetValue);
+	    console.log(vCount);
 
 	    if ( !isVisible ) {
 	    	el.parentNode.removeChild(el);
-	    	direction = "l";
+	    	direction = "u";
 	    	lastElement = count - 1;
 	    	var newValue = document.getElementById('element' + lastElement);
 	    	offsetValue = newValue.getBoundingClientRect().top;
@@ -104,22 +104,28 @@ function isWithinViewport(idValue) {
 }
 
 function downVerticalHTML (){
-	return '<div style="position:absolute;width:5vw;height:5vw;top:' + 6 * vCount + 'vw;margin:0.3vw;background:pink;"id=' + idValue +'></div>';
+	console.log("downVerticalHTML is rendering");
+	return '<div style="position:absolute;width:5vw;height:5vw;top:' + 6 * vCount + 'vw;margin:0.3vw;background:magenta;"id=' + idValue +'></div>';
 }
 
 function rightHorizontalHTML (){
+	console.log("rightHorizontalHTML is rendering");
 	return '<div style="position:absolute;width:5vw;height:5vw;left:' + 6 * hCount + 'vw;top:' + offsetValue  +'px;margin:0.3vw;background:red;"id=' + idValue +'></div>';
 }
 
 function upVerticalHTML (){
-	return '<div style="position:absolute;width:5vw;height:5vw;top:' + offsetValue  + 'px;right:0.5vw;margin:0.3vw;background:purple;"id=' + idValue +'></div>';
+	console.log("upVerticalHTML is rendering");
+	return '<div style="position:absolute;width:5vw;height:5vw;top:' + (6 * vCount)  + 'px;right:0.5vw;margin:0.3vw;background:purple;"id=' + idValue +'></div>';
 }
 
 function leftHorizontalHTML (){
-	return '<div style="position:absolute;width:5vw;height:5vw;right:' + 6 * hCount + 'vw;top:' + (offsetValue - 5) +'px;margin:0.3vw;background:green;"id=' + idValue +'></div>';
+	console.log("leftHorizontalHTML is rendering");
+	return '<div style="position:absolute;width:5vw;height:5vw;right:' +"-"+ 6 * hCount + 'vw;top:' + (offsetValue - 5) +'px;margin:0.3vw;background:green;"id=' + idValue +'></div>';
 }
 
 function main() {
+	console.log("The direction is :", direction);
+
 	idValue = 'element' + count;
 
 	if (direction === "d") {
