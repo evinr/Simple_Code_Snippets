@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NASA APOD Scrapper</title>
+<style type="text/css">
+    body {
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+    .credits {
+        background-color: black;
+        opacity: 0.5;
+        color: white;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+    .credits a {
+        color: white;
+    }
+
+</style>
+</head>
+<body>
+    <form id="form">
+        <button type="button" onclick="loadData()">Load NASA APOD</button>
+         <button type="button" onclick="iframeCreate()">Load iframe</button>
+    </form>
+    <div class='credits'></div>
+</body>
+<script>
+var url = 'http://apod.nasa.gov/apod/';
+var proxy = 'http://cors.io/?u=';
+
+function loadData() {
+    var xhttp;
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+            parseLink (xhttp.responseText)
+        }
+    }
+    xhttp.open("GET", proxy + "http://apod.nasa.gov/apod/astropix.html", true);
+    xhttp.send();
+}
+
+function parseLink (data) {
+    var urlRe = /<br>\s*\n*<a\shref="(.*)">/g;
+    var creditsRe = /<\/center>\n\n<center>\n((.*\n*)*?)<\/center>/g;
+    var urlArray = urlRe.exec(data);
+    var creditsArray = creditsRe.exec(data);
+    renderBackground (url + urlArray[1], creditsArray[1]);
+}
+
+function renderBackground (image, credits) {
+    //TODO: render the credits 
+    //append html to lower right corner div
+    document.getElementsByClassName('credits')[0].innerHTML = credits;
+    //un hide the credits div
+
+
+   document.body.style.backgroundImage = 'url(' + image + ')';
+
+}
+</script>
+</html>
