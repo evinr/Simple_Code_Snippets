@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DIY Responsive Grid</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<style type="text/css">
+
+/* -----------Smartphone View----------- */ 
+@media only screen and (max-width : 480px)   {
+	.tile {
+		width: 100%;
+	}
+}
+
+/* -----------Desktop View----------- */ 
+@media only screen and (min-width : 481px)   {
+	.tile {
+		width: 40%;
+	}
+}
+
+/* -----------Universal Views----------- */ 
+html, body { 
+   height: 100%;
+   margin: 0 auto;
+}
+
+.tile {
+	/*height: 40%;  Height cannot be used due to the fact that it scales based on content */
+	padding-bottom: 40%; /*by using padding-bottom the positioning allows for content to be rendered consistanly */
+	background-color: blue;
+	margin: 5%;
+	position: relative; /* the container needs to be needs to be relative if the contents will be absolute */
+	float: left;
+	overflow: hidden;
+}
+
+.content {
+	position: absolute; /* needs to be absolute so the parent container does not use it in sizing calculations */
+}
+   
+</style>
+</head>
+<body>
+	<div class='tile'>
+		<div class='content'>
+			Some sort of content is inside each of these! Number 1!
+		</div>
+	</div>
+	<div class='tile'>
+		<div class='content'>
+			Some sort of content is inside each of these! Number 2!
+		</div>
+	</div>
+	<div class='tile'>
+		<div class='content'>
+			Some sort of content is inside each of these! Number 3!
+		</div>
+	</div>
+	<div class='tile'>
+		<div class='content'>
+			Some sort of content is inside each of these! Number 4!
+		</div>
+	</div>
+</body>
+
+<script>
+
+</script>
+</html>
