@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Proper URL Check: A Job Not for a Regex</title>
+
+<form>
+<input>
+</form>
+
+<style>
+</style>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+
+/*
+
+Source: https://news.ycombinator.com/item?id=10019795
+
+billyhoffman 1 day ago
+
+Please. Please Please Please. With Sugar on Top. Don't do this with a regex.
+I've written a lot of web facing software that accepts URLs from the untrusted masses and ultimately makes requests to them if they are "valid." The lesson I've learned is simple. Regex's are terrible for this task because there are a ton of things you check and lots of normalization you need to do. Instead, do this as a function
+I've evolved mine over the years, and my use case is semi-specific: Given a string, validate it as a fully qualified HTTP/HTTPS URL that doesn't have credentials and isn't trying to point my software toward the internal network or localhost. It looks like this:
+- Use system/framework library to create Uri object from source string. All your checks will be consulting this object's properties, not looking at the source string
+- Is scheme HTTP/HTTPS? If no, stop
+- Did they supply user:pass@ in URL? If so, stop, and yell at them for putting usernames and passwords into a random site on the Internet.
+- If hostname is an IP address, normalize it to dotted decimal quad IPv4 or IPv6 (no octal obfuscation for you!), and test against private IP space ranges or loopback. If private or loopback, stop
+- If hostname is an actual hostname, normalize it + de-puny code it, and check for localhost aliases. If local, stop (you can also do a DNS lookup and make sure you someone isn't trying to return private/local IPs to bypass your checks)
+At this point, you have a syntactically valid, fully qualified URL pointing to a public facing web property accessed via HTTP or HTTPS.
+You don't have to worry about TLDS or the like. At this point, you can do additional DNS checks, check the domain against lists of bad actors, whatever else you want to do. You can try and be smart and do things like, "if supplied URL wasn't fully qualified, prepend http:// and try validation again" to avoid user error. Pretty flexible.
+This is more rigorous than a simple regex and way way way easier for another developer to read and understand what is going on.
+*/
+
+
+//- Use system/framework library to create Uri object from source string. All your checks will be consulting this object's properties, not looking at the source string
+
+
+// - Is scheme HTTP/HTTPS? If no, stop
+
+
+// - Did they supply user:pass@ in URL? If so, stop, and yell at them for putting usernames and passwords into a random site on the Internet.
+
+
+// - If hostname is an IP address, normalize it to dotted decimal quad IPv4 or IPv6 (no octal obfuscation for you!), and test against private IP space ranges or loopback. If private or loopback, stop
+
+
+// - If hostname is an actual hostname, normalize it + de-puny code it, and check for localhost aliases. If local, stop (you can also do a DNS lookup and make sure you someone isn't trying to return private/local IPs to bypass your checks)
+
+
+// At this point, you have a syntactically valid, fully qualified URL pointing to a public facing web property accessed via HTTP or HTTPS.
+
+
+// Do additional DNS checks, check the domain against lists of bad actors, whatever else you want to do. 
+
+
+//You can try and be smart and do things like, "if supplied URL wasn't fully qualified, prepend http:// and try validation again" to avoid user error.
+
+</script>
+
+</html>

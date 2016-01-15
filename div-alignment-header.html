@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>3 Div Header Alignment PoC</title>
+<style>
+
+.container {
+	width: 400px;
+	height: 300px;
+	background-color: blue;
+}
+
+.header {
+	width:100%;
+	background-color: magenta;
+	text-align: center;
+}
+
+.header-element {
+}
+
+.lefty {
+	float: left;
+	background-color: greenyellow;
+}
+
+.centered {
+	background-color: seagreen;
+	    display: inline-block;
+	    background-image: url('assets/logos/batman.png');
+	    background-size: auto 100%;
+	    background-repeat: no-repeat;
+/*	    background-position: center;
+*/	    background-position: 50% 50%;
+
+}
+
+.righty {
+	background-color: darkgreen;
+	float: right;
+}
+
+.content {
+	width:100%;
+}
+
+</style>
+
+</head>
+<body>
+
+	<div class='container'>
+		<div class='header'>
+			<div class='lefty header-element'>
+				I am first!
+			</div>
+			<div class='centered header-element'>
+				I am the middle!
+			</div>
+			<div class='righty header-element'>
+				I am the last!
+			</div>
+		</div>
+		<div class='content'>
+			<p>
+				Alcatra shank kevin, jowl rump filet mignon meatball tail salami cow porchetta brisket venison chicken pork chop. Beef ribs sirloin porchetta, jowl ham ground round bresaola tenderloin turducken frankfurter. Landjaeger jerky boudin hamburger kevin pig. Pastrami pork salami flank, chuck brisket shank pork loin.
+			</p>	
+		</div>
+	</div>
+
+</body>
+</html>
