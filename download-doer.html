@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Downloader Script</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+<!-- 	 <script src='./resources/app.js'></script>
+    <link rel='stylesheet' type='text/css' href='./resources/style.css'> -->
+	<style type='text/css'>
+	   
+	</style>
+</head>
+<body>
+	<h1>
+		Downloader Script
+	</h1>
+	<p>
+		This is used to generate a download using JavaScript. Great example of this is to have someone else enter it into the console and then generate a file that can be debugged at a later date. 
+
+</body>
+
+<script>
+
+var a = window.document.createElement('a'); 
+a.href = window.URL.createObjectURL(new Blob(['TETSSAFD asdf asdf asdfa'], {type: 'text/html'})); 
+a.download = 'test.html'; 
+document.body.appendChild(a); 
+a.click(); 
+document.body.removeChild(a);
+
+</script>
+</html>
