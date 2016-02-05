@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Function that Returns a Function</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+	<style type='text/css'>
+	   
+	</style>
+</head>
+<body>
+
+</body>
+
+<script>
+//This was an interviewing question that I bombed on...
+/* 
+ * Make a function counter() that makes 
+ * a function that generates unique symbols 
+ * and keeps count of the number of times it's called.
+ *
+ * var counterG = counter("G"),
+ *    counterH = counter("H"); 
+ * counterG()      // "G1"
+ * counterH()      // "H1"
+ * counterG()      // "G2"
+ * counterH()      // "H2"
+ */
+ 
+function counter(letter) {
+	var count = 0;
+	return function() {
+		count +=1;
+		return letter + count
+	};
+}
+
+var counterG = counter("G"),
+	counterH = counter("H"); 
+
+console.log(counterG())// "G1"
+console.log(counterH())// "H1"
+console.log(counterG())// "G2"
+console.log(counterH())// "H2"
+
+</script>
+</html>
