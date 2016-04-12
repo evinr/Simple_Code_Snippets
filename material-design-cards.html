@@ -30,7 +30,7 @@ html, body {
 
 .card {
 	/*height: 40%;  Height cannot be used due to the fact that it scales based on content */
-	padding-bottom: 20%; /*by using padding-bottom the positioning allows for content to be rendered consistanly */
+	padding-bottom: 13%; /*by using padding-bottom the positioning allows for content to be rendered consistanly */
 	background: #fff;
 	margin: 5%;
 	position: relative; /* the container needs to be needs to be relative if the contents will be absolute */
@@ -44,32 +44,154 @@ html, body {
 
 .content {
 	position: absolute; /* needs to be absolute so the parent container does not use it in sizing calculations */
-	margin: 2%;
+	/* margin: 2%; */
+	display: flex;
+	flex-direction: column;
+	height: 40%;
 }
 
+.content p {
+	margin: 1em;
+}
+
+.image {
+	width:100%;
+	height: 19vh;
+	background-image: url('http://skanditra.se/wp-content/uploads/2014/07/Holiday1.jpg');
+}
+
+.image h2 {
+	margin: -46px 15px;
+    font-size: 203%;
+    color: white;
+}
+
+.scrim {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.buttons {
+	display: flex;
+	justify-content: flex-end;
+	align-content: flex-end;
+	align-self: flex-end;
+	margin-right: 1em;
+}
+
+.flat-button {
+	border: none;
+    border-radius: 2px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    outline: 0;
+/*     padding: 0 2rem;
+ */    text-transform: uppercase;
+        box-shadow: none;
+    background-color: transparent;
+}
+
+.menu {
+	float: right;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
 
    
 </style>
 </head>
 <body>
 	<div class='card'>
+		<div class='image'> 
+			<div class='scrim'>
+			</div>
+			<div class='menu'>
+			</div>
+			<h2>
+				Number 1 Title
+			</h2>
+		</div>
+		
+		
 		<div class='content'>
-			Some sort of content is inside each of these! Number 1!
+			
+			<p>
+				I am a description that is scraped from the first main block of text through the link!
+			</p>
+			<div class='buttons material-buttons'>
+				<button class='flat-button'>
+					Learn More
+				</button>
+			</div>
 		</div>
 	</div>
 	<div class='card'>
+		<div class='image'> 
+			<div class='scrim'>
+			</div>
+			<h2>
+				Number 2 Title
+			</h2>
+		</div>
+		
+		
 		<div class='content'>
-			Some sort of content is inside each of these! Number 2!
+			
+			<p>
+				I am a description that is scraped from the first main block of text through the link!
+			</p>
+			<div class='buttons material-buttons'>
+				<button class='flat-button'>
+					Learn More
+				</button>
+			</div>
 		</div>
 	</div>
 	<div class='card'>
+		<div class='image'> 
+			<div class='scrim'>
+			</div>
+			<h2>
+				Number 3 Title
+			</h2>
+		</div>
+		
+		
 		<div class='content'>
-			Some sort of content is inside each of these! Number 3!
+			
+			<p>
+				I am a description that is scraped from the first main block of text through the link!
+			</p>
+			<div class='buttons material-buttons'>
+				<button class='flat-button'>
+					Learn More
+				</button>
+			</div>
 		</div>
 	</div>
 	<div class='card'>
+		<div class='image'> 
+			<div class='scrim'>
+			</div>
+			<h2>
+				Number 4 Title
+			</h2>
+		</div>
+		
+		
 		<div class='content'>
-			Some sort of content is inside each of these! Number 4!
+			
+			<p>
+				I am a description that is scraped from the first main block of text through the link!
+			</p>
+			<div class='buttons material-buttons'>
+				<button class='flat-button'>
+					Learn More
+				</button>
+			</div>
 		</div>
 	</div>
 </body>
