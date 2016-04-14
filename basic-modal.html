@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Modal Test</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+<!-- 	 <script src='./resources/app.js'></script>
+    <link rel='stylesheet' type='text/css' href='./resources/style.css'> -->
+	<style type='text/css'>
+
+	.modalDialog {
+	    position: fixed;
+	    font-family: Arial, Helvetica, sans-serif;
+	    top: 0;
+	    right: 0;
+	    bottom: 0;
+	    left: 0;
+	    background: rgba(0, 0, 0, 0.4);
+	    z-index: 99999;
+	    -webkit-transition: opacity 400ms ease-in;
+	    -moz-transition: opacity 400ms ease-in;
+	    transition: opacity 400ms ease-in;
+
+	    opacity:0;
+	    pointer-events: none;
+	}
+
+	.modalDialog:target {
+	    opacity:1;
+	    pointer-events: auto;
+	}
+
+	.modalDialog > div {
+	    width: 400px;
+	    position: relative;
+	    margin: 10% auto;
+	    padding: 5px 20px 13px 20px;
+	    border-radius: 3px;
+	    background: #fff;
+	}
+
+	.close {
+	    color: #000000;
+	    line-height: 25px;
+	    float: right;
+	    text-decoration: none;
+	    font-weight: lighter;
+	}
+	
+
+	   
+	</style>
+</head>
+<body>
+
+	<a href="#openModal">Open Modal</a>
+
+	<div id="openModal" class="modalDialog">
+		<div>
+			<a href="#close" title="Close" class="close">X</a>
+			<h2>Modal Box</h2>
+			<p>Use me to provide an explicit interaction that the user can click close or press escape to leave, but cannot click outside to close as it is not a11y for non-visual users.</p>
+		</div>
+	</div>
+
+</body>
+
+<script>
+
+</script>
+</html>
