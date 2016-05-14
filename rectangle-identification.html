@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Another Failed Technical Screening</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+<!-- 	 <script src='./resources/app.js'></script>
+    <link rel='stylesheet' type='text/css' href='./resources/style.css'> -->
+	<style type='text/css'>
+	   
+	</style>
+</head>
+<body>
+
+</body>
+
+<script>
+
+var image = [
+  [1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 1, 1, 1, 1],
+  [1, 1, 1, 0, 0, 0, 1],
+  [1, 1, 1, 0, 0, 0, 1],
+  [1, 1, 1, 0, 0, 0, 1],
+  [1, 1, 1, 0, 0, 0, 1],
+  [1, 1, 1, 1, 1, 1, 1]
+];
+
+function simpleFind (image) { // O(1) complexity since JavaScript stores an array the same as an object
+  var rectangle = {
+    topLeftX: null,
+    topY: null,
+    topRightX: null,
+    bottomY: null
+  };
+  
+  for (var i=0; i < image.length; i++){ //y-axis
+    var yAxis = image[i];
+      for (var k=0; k < yAxis.length; k++){//x-axis
+        var xValue = yAxis[k];
+        if (xValue === 0 && rectangle.topLeftX === null) { // first match
+          rectangle.topLeftX = k;
+          rectangle.topY = i;
+        }
+        else if (xValue === 1 && rectangle.topLeftX !== null && rectangle.topRightX === null) { //second match
+          rectangle.topRightX =  k - 1;
+        }
+        else if (i > 0 && image[i-1][k] === 0 && yAxis[k] === 1 && rectangle.topLeftX !== null && rectangle.topRightX !== null) { // last row match
+          rectangle.bottomY = i - 1;
+        }
+      }
+  }
+  return rectangle;
+}
+
+console.log(JSON.stringify(simpleFind(image)));
+
+</script>
+</html>
