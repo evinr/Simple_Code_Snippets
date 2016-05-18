@@ -1,37 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>NASA APOD Scrapper</title>
+<title>NASA APOD Background Scraper</title>
 <style type="text/css">
    
     body {
-      background-size: cover;
+        background-color: black;
+        width: 100vw;
+        height: 100vh;
+        margin: 0 auto;
+    }
+
+    main {
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center; 
+    }
+
+    .credits h1 { 
+        margin: 5px 0px 15px;
+        font-size: 200%;
+        letter-spacing: 0px;
     }
 
     .credits {
         background:rgba(0, 0, 0, 0.5);
         color: white;
         position: absolute;
-        bottom: 0;
-        right: 0;
+        bottom: 10px;
+        right: 15px;
+        padding: 15px;
+        font-size: small;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        letter-spacing: 0.05em;
     }
 
     .credits a {
         color: white;
+        text-decoration: none;
     }
 
 </style>
 </head>
 <body>
-    <form id="form">
-        <button type="button" onclick="loadData()">Load NASA APOD</button>
-    </form>
-    <div class='credits'>
-    </div>
+    <main id='main'></main>
+    <section class='credits'>
+    </section>
 </body>
 
 <script>
-var url = 'http://apod.nasa.gov/apod/';
+var baseUrl = 'http://apod.nasa.gov/apod/';
 var proxy = 'http://cors.io/?u=';
 
 function loadData() {
@@ -47,18 +67,20 @@ function loadData() {
 }
 
 function parseLink (data) {
-    console.log(data);
     var urlRe = /<br>\s*\n*<a\shref="(image.*)">/g;
     var creditsRe = /<\/center>\n\n<center>\n((.*\n*)*?)<\/center>/g;
-    var urlArray = urlRe.exec(data);
-    var creditsArray = creditsRe.exec(data);
-    renderBackground (url + urlArray[1], creditsArray[1]);
+    var url = urlRe.exec(data)[1];
+    var credits = creditsRe.exec(data)[1].split('<br>');
+    title = credits[0];
+    credits = credits[1].replace(':', ':<br>');
+    renderBackground (baseUrl + url, title, credits);
 }
 
-function renderBackground (image, credits) {
-    document.getElementsByClassName('credits')[0].innerHTML = credits;
-    document.body.style.backgroundImage = 'url(' + image + ')';
-
+function renderBackground (image, title, credits) {
+    document.getElementsByClassName('credits')[0].innerHTML = '<h1>' + title + '</h1>' + credits;
+    document.getElementById('main').style.backgroundImage = 'url(' + image + ')';
 }
+
+loadData();
 </script>
 </html>
