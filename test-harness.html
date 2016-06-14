@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test Harness Example</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+<!-- 	 <script src='./resources/app.js'></script>
+    <link rel='stylesheet' type='text/css' href='./resources/style.css'> -->
+	<style type='text/css'>
+	   
+	</style>
+</head>
+<body>
+	<h1>
+		Test Harness
+	</h1>
+	<p>
+		This is a test harness. A way to be able to test functionality, without directly having to touch the functionality.
+	</p>
+</body>
+<script>
+	// set the url to www.example.com?whatever to activate the test harness
+	// in the example below we use the existance of a query string as our test harness mechanism
+	var queryString = window.location.search;
+	var whatNormallyWouldTriggerPositiveCondition = false;
+	if (whatNormallyWouldTriggerPositiveCondition || queryString.length > 0){
+		alert("Test Harness Activated");
+	}
+</script>
+</html>
