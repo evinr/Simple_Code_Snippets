@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>File API Example</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+<!-- 	 <script src='./resources/app.js'></script>
+    <link rel='stylesheet' type='text/css' href='./resources/style.css'> -->
+	<style type='text/css'>
+	   
+	</style>
+	<h1>
+		File API Example
+	</h1>
+	<input id='upload' type='file' accept='audio/*;capture=microphone'>
+</head>
+<body>
+
+</body>
+
+<script>
+// Check for the various File API support.
+if (window.File && window.FileReader && window.FileList && window.Blob) {
+  // Great success! All the File APIs are supported.
+} else {
+  alert('The File APIs are not fully supported in this browser.');
+}
+
+/** Demonstrates the functional steps needed to process a file into a binary string */
+var processUpload = function (event) {
+							//keyed object containing all of the files uploaded
+	var file = event.target.files[0];
+	var bytes;
+	console.log(file);
+
+	// Filter out images of a certain type
+	if (!file.type.match('image.*')) {
+	return;
+	}
+
+	var reader = new FileReader();
+	//pass in the callback here
+	// reader.onload = convertToBinary
+
+    bytes = reader.readAsBinaryString(file);
+    console.log(reader);
+}
+
+document.getElementById('upload').addEventListener('change', processUpload, false);
+
+
+</script>
+</html>
