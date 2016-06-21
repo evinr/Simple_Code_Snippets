@@ -20,9 +20,9 @@
 <script>
 // Check for the various File API support.
 if (window.File && window.FileReader && window.FileList && window.Blob) {
-  // Great success! All the File APIs are supported.
+	// Great success! All the File APIs are supported.
 } else {
-  alert('The File APIs are not fully supported in this browser.');
+	alert('The File APIs are not fully supported in this browser.');
 }
 
 /** Demonstrates the functional steps needed to process a file into a binary string */
@@ -30,7 +30,8 @@ var processUpload = function (event) {
 							//keyed object containing all of the files uploaded
 	var file = event.target.files[0];
 	var bytes;
-	console.log(file);
+	var base64;
+	console.log(file.name);
 
 	// Filter out images of a certain type
 	if (!file.type.match('image.*')) {
@@ -38,11 +39,18 @@ var processUpload = function (event) {
 	}
 
 	var reader = new FileReader();
-	//pass in the callback here
-	// reader.onload = convertToBinary
+	//pass in the callbacks here
+	reader.onload = console.log('reader starting');
+	reader.onloadend = function(evt) {
+		if (evt.target.readyState == FileReader.DONE) { // DONE == 2
+			bytes = reader.result;
+			base64 = btoa(reader.result);
+			console.log(bytes)
+			console.log(base64)
+		}
+	}
 
-    bytes = reader.readAsBinaryString(file);
-    console.log(reader);
+	reader.readAsBinaryString(file);
 }
 
 document.getElementById('upload').addEventListener('change', processUpload, false);
