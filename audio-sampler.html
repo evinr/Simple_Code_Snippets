@@ -101,7 +101,7 @@ if (!audioCaptureInitializationCheck){
 
 /** gets audio from source and return base64 string */
 var captureAudio = function () {
-console.log('check')
+	//TODO: Add 'STOP' recording functionality
 	var aCtx;
 	var analyser;
 	var microphone;
@@ -149,26 +149,69 @@ var elementClassToggle = function (targetElement) {
 	}
 }
 
+var processUpload = function (event) {
+							//keyed object containing all of the files uploaded
+	var file = event.target.files[0];
+	var bytes;
+	var base64;
+	console.log(file.name);
+
+	// Filter to only accept audio files
+	console.log(file.type)
+	// if (!file.type.match('image.*')) {
+	// return;
+	// }
+
+	var reader = new FileReader();
+	//pass in the callbacks here
+	reader.onload = console.log('reader starting');
+	reader.onloadend = function(evt) {
+		if (evt.target.readyState == FileReader.DONE) { // DONE == 2
+			bytes = reader.result;
+			base64 = btoa(reader.result);
+			console.log(bytes)
+			console.log(base64)
+		}
+	}
+
+	reader.readAsBinaryString(file);
+}
+
+var togglePlaying = function () {
+	if (player.duration > 0 && player.paused) {
+			player.play();
+		}
+		else {
+			player.pause();
+			//the line below makes this not a real pause button, rather a stop button
+			//comment out for true pause functionality
+			player.currentTime = 0;
+		}
+}
+
+document.getElementById('upload').addEventListener('change', processUpload, false);
+
+
 document.body.addEventListener("click", function(event){
-	console.log(event)
 	if (event.srcElement.id === 'play') { //srcElement is not present in FF
-		//TODO: Toggle class for pause
 		elementClassToggle('play');
 		console.log('play')
-		player.play();
+
+		togglePlaying();
+		
 	}
 
 	if (event.srcElement.id === 'record') {
-		//TODO: Toggle class for stop
 		elementClassToggle('record');
 		console.log('record')
+
 		captureAudio();
 	}
 
 	if (event.srcElement.id === 'upload') {
 		console.log('upload')
+
 		document.getElementById("up").click();
-		// TODO: insert a hook here to call a function after the file is uploaded
 	}
 
 	if (event.srcElement.id === 'conversion') {
