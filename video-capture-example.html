@@ -14,7 +14,7 @@
 		Your browser does not support the video tag.
 	</video>
 	<button id='snap'>Grab a Photo</button>
-	<!-- <button id='snap'>Grab a Video</button> -->
+	<button id='snap'>Grab a Video</button>
 	<br>
 	<canvas id='canvas' width='320' height='240'></canvas>
 </body>
@@ -56,7 +56,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		context = canvas.getContext('2d');
 
 	navigator.getUserMedia(videoObj, function(stream) {
-		video.src = window.URL.createObjectURL(stream); // || stream; 
+		video.src = window.URL.createObjectURL(stream); // || stream // who even uses stream, IE? lol; 
 		video.play();
 	}, errBack);
 }, false);
