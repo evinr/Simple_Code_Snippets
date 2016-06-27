@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Video Capture Example</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+<!-- 	 <script src='./resources/app.js'></script>
+    <link rel='stylesheet' type='text/css' href='./resources/style.css'> -->
+	<style type='text/css'>
+	   
+	</style>
+</head>
+<body>
+	<video id='video' width='1280' height='720' autoplay>
+		Your browser does not support the video tag.
+	</video>
+	<button id='snap'>Grab a Photo</button>
+	<br>
+	<canvas id='canvas' width='320' height='240'></canvas>
+</body>
+
+<script>
+var context; // Lazy/dumb hoisting
+
+//Standarized the getUserMedia function across all of the different browsers
+navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+
+/** check if url is https or localhost and alert the user that we will not be able to access the microphone */
+var audioCaptureInitializationCheck = function () {
+	var url = window.location.href;
+	var secureUrlIdentifier = 'https';
+	var localhostIdentifier = 'localhost';
+
+	if (url.indexOf(secureUrlIdentifier) === -1) {
+		if (url.indexOf(localhostIdentifier) === -1){
+			alert('Either need https or localhost to capture from the camera and microphone')
+		}
+		else {
+			return true;
+		}
+	}
+	else {
+		return true;
+	}
+}
+
+	// Put event listeners into place
+window.addEventListener('DOMContentLoaded', function() {
+	// Grab elements, create settings, etc.
+	var canvas = document.getElementById('canvas'),
+		video = document.getElementById('video'),
+		videoObj = { 'video': true },
+		errBack = function(error) {
+			console.log('Video capture error: ', error.code); 
+		};
+		context = canvas.getContext('2d');
+
+	navigator.getUserMedia(videoObj, function(stream) {
+		video.src = window.URL.createObjectURL(stream); // || stream // who even uses stream, IE? lol; 
+		video.play();
+	}, errBack);
+}, false);
+
+// Trigger photo take
+document.getElementById('snap').addEventListener('click', function() {
+	context.drawImage(video, 0, 0, 320, 240);
+});
+</script>
+</html>
