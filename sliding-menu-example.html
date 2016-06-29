@@ -6,11 +6,13 @@
 <!-- 	 <script src='./resources/app.js'></script>
     <link rel='stylesheet' type='text/css' href='./resources/style.css'> -->
 	<style type='text/css'>
+
 		body {
 			width: 100vw;
 			height: 100vh;
 			margin: 0 auto;
 		}
+
 		header {
 			width: 100%;
 			height: 50px;
@@ -18,18 +20,32 @@
 			position: absolute;
 		}
 
-		.menu {
-			height: 50px;
-			width: 50px;
-			background-color: blue;
+		.icon {
 			position: absolute;
-			top: 0;
 			left: 0;
 			background-repeat: no-repeat;
 			background-position: center; 
 			background-size: 60%;
-			background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCAzMDIgMzAyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAzMDIgMzAyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCI+CjxnPgoJPHJlY3QgeT0iMzYiIHdpZHRoPSIzMDIiIGhlaWdodD0iMzAiIGZpbGw9IiNGRkZGRkYiLz4KCTxyZWN0IHk9IjIzNiIgd2lkdGg9IjMwMiIgaGVpZ2h0PSIzMCIgZmlsbD0iI0ZGRkZGRiIvPgoJPHJlY3QgeT0iMTM2IiB3aWR0aD0iMzAyIiBoZWlnaHQ9IjMwIiBmaWxsPSIjRkZGRkZGIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==);
 		}
+
+		.menu {
+			height: 50px;
+			width: 50px;
+			top: 0; 
+			background-color: blue;
+			background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCAzMDIgMzAyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAzMDIgMzAyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCI+CjxnPgoJPHJlY3QgeT0iMzYiIHdpZHRoPSIzMDIiIGhlaWdodD0iMzAiIGZpbGw9IiNGRkZGRkYiLz4KCTxyZWN0IHk9IjIzNiIgd2lkdGg9IjMwMiIgaGVpZ2h0PSIzMCIgZmlsbD0iI0ZGRkZGRiIvPgoJPHJlY3QgeT0iMTM2IiB3aWR0aD0iMzAyIiBoZWlnaHQ9IjMwIiBmaWxsPSIjRkZGRkZGIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==);
+			transition: width 200ms ease-in;
+		}
+
+		.menu.expanded {
+			background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCIgdmlld0JveD0iMCAwIDEzNy4wNjUgMTM3LjA2NCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTM3LjA2NSAxMzcuMDY0OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPGcgaWQ9Il94MzRfODMuX0JhY2siPgoJCTxnPgoJCQk8cGF0aCBkPSJNNTUuMTIsNjguNTMybDUxLjYwNi01MS42MTRjMi43MzgtMi43MzQsMi43MzgtNy4xNzMsMC05LjkxMWwtNC45NTUtNC45NTZjLTIuNzM3LTIuNzM2LTcuMTczLTIuNzM2LTkuOTEsMCAgICAgTDMwLjMzNyw2My41NzdjLTIuNzM2LDIuNzM2LTIuNzM2LDcuMTczLDAsOS45MTFsNjEuNTI0LDYxLjUyM2MyLjczNywyLjczNyw3LjE3MywyLjczNyw5LjkxLDBsNC45NTUtNC45NTUgICAgIGMyLjczOC0yLjczOCwyLjczOC03LjE3NywwLTkuOTExTDU1LjEyLDY4LjUzMnoiIGZpbGw9IiNGRkZGRkYiLz4KCQk8L2c+Cgk8L2c+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==);
+			background-size: inherit;
+		}
+
+		*.expanded {
+			width: 100px;
+		}
+
 		nav {
 			float: left;
 			height: 100%;
@@ -38,43 +54,41 @@
 			/*  display: flex;
 		    flex-direction: column; */
 		    overflow: hidden;
+		    transition: width 200ms ease-in;
 		}
+
 		ul {
     		list-style-type: none;
         	padding: 0 0 50px 0;
         	margin-top: 50px;
 		}
 		li {
-			  border-bottom: 3px solid lightgray;
-			  margin: 0 auto;
+			border-bottom: 3px solid lightgray;
+			margin: 0 auto;
 		}
-		li span {
-			float: right;
-		}
+
 		li a i {
 			width: 50px;
 			height: 50px;
-			font-size: 24px;
-		    line-height: 100px;
-		    text-align: center;
-		    vertical-align: middle;
 		}
+
 		li a {
+			/* These are needed to center */
 		    display: flex;
+		    align-items: center;
+			
+			margin-left: 50px;
 		    width: 60px;
 		    height: 50px;
 		    padding: 10px 0 0 5px;
-		    vertical-align: middle;
 		    color: inherit;
 		  	text-decoration: inherit;
 		}
+
 		.icons {
-			background-repeat: no-repeat;
-			background-position: center; 
-			background-size: 60%;
 			background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCIgdmlld0JveD0iMCAwIDU0Ljg0OSA1NC44NDkiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDU0Ljg0OSA1NC44NDk7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8Zz4KCQk8Zz4KCQkJPHBhdGggZD0iTTU0LjQ5NywzOS42MTRsLTEwLjM2My00LjQ5bC0xNC45MTcsNS45NjhjLTAuNTM3LDAuMjE0LTEuMTY1LDAuMzE5LTEuNzkzLDAuMzE5Yy0wLjYyNywwLTEuMjU0LTAuMTA0LTEuNzktMC4zMTggICAgIGwtMTQuOTIxLTUuOTY4TDAuMzUxLDM5LjYxNGMtMC40NzIsMC4yMDMtMC40NjcsMC41MjQsMC4wMSwwLjcxNkwyNi41Niw1MC44MWMwLjQ3NywwLjE5MSwxLjI1MSwwLjE5MSwxLjcyOSwwTDU0LjQ4OCw0MC4zMyAgICAgQzU0Ljk2NCw0MC4xMzksNTQuOTY5LDM5LjgxNyw1NC40OTcsMzkuNjE0eiIgZmlsbD0iI0ZGRkZGRiIvPgoJCQk8cGF0aCBkPSJNNTQuNDk3LDI3LjUxMmwtMTAuMzY0LTQuNDkxbC0xNC45MTYsNS45NjZjLTAuNTM2LDAuMjE1LTEuMTY1LDAuMzIxLTEuNzkyLDAuMzIxYy0wLjYyOCwwLTEuMjU2LTAuMTA2LTEuNzkzLTAuMzIxICAgICBsLTE0LjkxOC01Ljk2NkwwLjM1MSwyNy41MTJjLTAuNDcyLDAuMjAzLTAuNDY3LDAuNTIzLDAuMDEsMC43MTZMMjYuNTYsMzguNzA2YzAuNDc3LDAuMTksMS4yNTEsMC4xOSwxLjcyOSwwbDI2LjE5OS0xMC40NzkgICAgIEM1NC45NjQsMjguMDM2LDU0Ljk2OSwyNy43MTYsNTQuNDk3LDI3LjUxMnoiIGZpbGw9IiNGRkZGRkYiLz4KCQkJPHBhdGggZD0iTTAuMzYxLDE2LjEyNWwxMy42NjIsNS40NjVsMTIuNTM3LDUuMDE1YzAuNDc3LDAuMTkxLDEuMjUxLDAuMTkxLDEuNzI5LDBsMTIuNTQxLTUuMDE2bDEzLjY1OC01LjQ2MyAgICAgYzAuNDc3LTAuMTkxLDAuNDgtMC41MTEsMC4wMS0wLjcxNkwyOC4yNzcsNC4wNDhjLTAuNDcxLTAuMjA0LTEuMjM2LTAuMjA0LTEuNzA4LDBMMC4zNTEsMTUuNDEgICAgIEMtMC4xMjEsMTUuNjE0LTAuMTE2LDE1LjkzNSwwLjM2MSwxNi4xMjV6IiBmaWxsPSIjRkZGRkZGIi8+CgkJPC9nPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=);
 		}
-	   
+
 	</style>
 </head>
 <body>
@@ -85,35 +99,46 @@
 	<ul>
 	  <li>
 	  	<a href="#asdf">
-			<i class='icons'></i>
+			<i class='icons icon'></i>
 			<span>First</span>
 	  	</a>
 	  </li>
 	  <li>
 	  	<a href="#asdf">
-			<i class='icons'></i>
+			<i class='icons icon'></i>
 			<span>News</span>
 	  	</a>
 	  </li>
 	  <li>
 	  	<a href="#asdf">
-			<i class='icons'></i>
+			<i class='icons icon'></i>
 			<span>About</span>
 	  	</a>
 	  </li>
 	  <li>
 	  	<a href="#asdf">
-			<i class='icons'></i>
+			<i class='icons icon'></i>
 			<span>Last</span>
 	  	</a>
 	  </li>
 	</ul>
 </section>
-<div class='menu'>
+<div class='icon menu'>
 </div>
 </body>
 
 <script>
+var elementClassToggle = function (element) {
+	console.log('asdf')
+	var elementA = document.getElementsByClassName('menu')[0];
+	var elementB = document.getElementsByClassName('sidebar')[0];
+	var targetClass = 'expanded';
+
+	elementA.classList.toggle(targetClass);
+	elementB.classList.toggle(targetClass);
+}
+
+document.getElementsByClassName('menu')[0].addEventListener("click", elementClassToggle)
 
 </script>
 </html>
