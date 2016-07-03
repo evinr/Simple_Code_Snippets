@@ -56,8 +56,10 @@
 			var analyser = audioCtx.createAnalyser();
 
 			// The DelayNode interface represents a delay-line; an AudioNode audio-processing module that causes a delay between the arrival of an input data and its propagation to the output. A DelayNode always has exactly one input and one output, both with the same amount of channels. 
+			var delay = audioCtx.createDelay();
+
 			// This value is used to create an orthoganal AudioNode which is what we will be playing the source from. The delay allows for us to smooth out some of the jank when it comes to analyzing in 16ms slices.
-			var delay = audioCtx.createDelay(179.0);
+			delay.delayTime.value = 1000;
 
 			// The createMediaElementSource() method of the AudioContext Interface is used to create a new MediaElementAudioSourceNode object, given an existing HTML <audio> or <video> element, the audio from which can then be played and manipulated.
 			var source = audioCtx.createMediaElementSource(audio);
@@ -68,9 +70,6 @@
 				// The components above are used to pipe the audio from the page into the AnalyserNode
 				source.connect(analyser);
 				source.connect(delay);
-
-				// The components above are used to pipe the audio from the page into the AnalyserNode
-				// delay.connect(analyser);
 
 				// The destination property of the AudioContext interface returns an AudioDestinationNode representing the final destination of all audio in the context. It often represents an actual audio-rendering device such as your device's speakers.
 				// analyser.connect(audioCtx.destination);// Plays the same AudioNode that is be analyzed
