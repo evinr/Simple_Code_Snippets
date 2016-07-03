@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Title Here</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+<!-- 	 <script src='./resources/app.js'></script>
+	Code based on this Stackoverflow post: http://stackoverflow.com/questions/23113580/simple-code-to-calculate-frequency-of-live-mic-audio-using-webaudio-api
+	Documation sourced from MDN: https://developer.mozilla.org/en-US/docs/Web/API/AudioContext/
+    <link rel='stylesheet' type='text/css' href='./resources/style.css'> -->
+	<style>
+	      #bar {
+        position: fixed;
+        display:flex;
+        top: 25%;
+        left: 40%;
+        width: 40%;
+        height: 40%;
+
+        transform: rotate(180deg);
+        flex-direction: row-reverse; 
+        
+    }
+
+    .p {
+        background-color: violet;
+        height: 100%;
+        width: 10%;
+        transition: height 150ms ease-in;
+        margin-right: 5px;
+    }
+
+	</style>
+</head>
+<body>
+<audio id="audio" src="audio-check.wav"></audio>
+<div id="bar">
+    <div id="P10" class="p"></div>
+    <div id="P20" class="p"></div>
+    <div id="P30" class="p"></div>
+    <div id="P40" class="p"></div>
+    <div id="P50" class="p"></div>
+    <div id="P60" class="p"></div>
+    <div id="P70" class="p"></div>
+    <div id="P80" class="p"></div>
+    <div id="P90" class="p"></div>
+</div>
+
+</body>
+
+<script>
+//Indented in order of functional semantic usage
+
+		// The AudioContext interface represents an audio-processing graph built from audio modules linked together, each represented by an AudioNode. An audio context controls both the creation of the nodes it contains and the execution of the audio processing, or decoding. You need to create an AudioContext before you do anything else, as everything happens inside a context.
+        audioCtx = new AudioContext();
+
+	        // The createAnalyser() method of the AudioContext interface creates an AnalyserNode, which can be used to expose audio time and frequency data and create data visualisations.
+	        analyser = audioCtx.createAnalyser();
+
+	        // The createMediaElementSource() method of the AudioContext Interface is used to create a new MediaElementAudioSourceNode object, given an existing HTML <audio> or <video> element, the audio from which can then be played and manipulated.
+	        source = audioCtx.createMediaElementSource(audio);
+
+		        // The two components above are used to pipe the audio from the page into the AnalyserNode
+		        source.connect(analyser);
+
+		        // The destination property of the AudioContext interface returns an AudioDestinationNode representing the final destination of all audio in the context. It often represents an actual audio-rendering device such as your device's speakers.
+        		analyser.connect(audioCtx.destination);
+
+        		// The fftSize property of the AnalyserNode interface is an unsigned long value representing the size of the FFT (Fast Fourier Transform) to be used to determine the frequency domain.
+				// The fftSize property's value must be a non-zero power of 2 in a range from 32 to 2048; its default value is 2048.
+        		analyser.fftSize = 32;
+
+		        // frequencyData contains 16 channels
+		        // The frequencyBinCount property of the AnalyserNode interface is an unsigned long value half that of the FFT size. This generally equates to the number of data values you will have to play with for the visualization.
+		        // analyser.frequencyBinCount === 16
+		        var frequencyData = new Uint8Array(analyser.frequencyBinCount);
+
+        function renderFrame() {
+
+        	// The getByteFrequencyData() method of the AnalyserNode interface copies the current frequency data into a Uint8Array (unsigned byte array) passed into it.
+			// If the array has fewer elements than the AnalyserNode.frequencyBinCount, excess elements are dropped. If it has more elements than needed, excess elements are ignored.
+            analyser.getByteFrequencyData(frequencyData);
+
+            P10.style.height = ((frequencyData[0] * 100) / 256) + "%";
+            P20.style.height = ((frequencyData[1] * 100) / 256) + "%";
+            P30.style.height = ((frequencyData[2] * 100) / 256) + "%";
+            P40.style.height = ((frequencyData[3] * 100) / 256) + "%";
+            P50.style.height = ((frequencyData[4] * 100) / 256) + "%";
+            P60.style.height = ((frequencyData[5] * 100) / 256) + "%";
+            P70.style.height = ((frequencyData[6] * 100) / 256) + "%";
+            P80.style.height = ((frequencyData[7] * 100) / 256) + "%";
+            P90.style.height = ((frequencyData[8] * 100) / 256) + "%";
+
+            console.log(frequencyData)
+
+            // The window.requestAnimationFrame() method tells the browser that you wish to perform an animation and requests that the browser call a specified function to update an animation before the next repaint. The method takes as an argument a callback to be invoked before the repaint.
+			// You should call this method whenever you're ready to update your animation onscreen. This will request that your animation function be called before the browser performs the next repaint. The number of callbacks is usually 60 times per second, but will generally match the display refresh rate in most web browsers as per W3C recommendation. The callback rate may be reduced to a lower rate when running in background tabs or in hidden <iframe>s in order to improve performance and battery life.
+            requestAnimationFrame(renderFrame);
+        }
+
+        audio.pause();
+
+        audio.play();
+
+        renderFrame();
+
+</script>
+</html>
