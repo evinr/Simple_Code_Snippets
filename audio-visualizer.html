@@ -59,7 +59,7 @@
 			var delay = audioCtx.createDelay();
 
 			// This value is used to create an orthoganal AudioNode which is what we will be playing the source from. The delay allows for us to smooth out some of the jank when it comes to analyzing in 16ms slices.
-			delay.delayTime.value = 1000;
+			delay.delayTime.value = 16;
 
 			// The createMediaElementSource() method of the AudioContext Interface is used to create a new MediaElementAudioSourceNode object, given an existing HTML <audio> or <video> element, the audio from which can then be played and manipulated.
 			var source = audioCtx.createMediaElementSource(audio);
@@ -89,6 +89,7 @@
 			// If the array has fewer elements than the AnalyserNode.frequencyBinCount, excess elements are dropped. If it has more elements than needed, excess elements are ignored.
 			analyser.getByteFrequencyData(frequencyData);
 
+				// TODO: Determine what the actual frequency output values are
 				P10.style.height = ((frequencyData[0] * 100) / 256) + '%';
 				P20.style.height = ((frequencyData[1] * 100) / 256) + '%';
 				P30.style.height = ((frequencyData[2] * 100) / 256) + '%';
