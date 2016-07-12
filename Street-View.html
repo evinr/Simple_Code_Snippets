@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Street View</title>
+    <!-- Mostly sourced from here: https://developers.google.com/maps/documentation/javascript/streetview#StreetViewContainers -->
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #street-view-1 {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="street-view-1"></div>
+    <script>
+// need to use StreetViewService to find the nearest panorama shot available and then calculated the Pov heading using the computeHeading method here
+
+      function initialize() {
+        panorama = new google.maps.StreetViewPanorama(
+            document.getElementById('street-view-1'),
+            {
+              position: {lat: 37.869260, lng: -122.254811},
+
+              pov: {
+                // heading (default 0) defines the rotation angle around the camera locus in degrees relative from true north. Headings are measured clockwise (90 degrees is true east).
+                heading: 165, 
+                // pitch (default 0) defines the angle variance "up" or "down" from the camera's initial default pitch, which is often (but not always) flat horizontal. (For example, an image taken on a hill will likely exhibit a default pitch that is not horizontal.) Pitch angles are measured with positive values looking up (to +90 degrees straight up and orthogonal to the default pitch) and negative values looking down (to -90 degrees straight down and orthogonal to the default pitch).
+                pitch: 0
+              },
+              zoom: 1,
+              // UI customization flags
+              // An addressControl provides a textual overlay indicating the address of the associated location, and offers a link to open the location in Google Maps. You can alter the control's appearance by providing StreetViewAddressControlOptions within the addressControlOptions field.
+              addressControl: false,
+              // A Close control allows the user to close the Street View viewer. You can enable or disable the Close control by setting enableCloseButton.
+              enableCloseButton: false,
+              // A fullscreenControl offers the option to open Street View in fullscreen mode. You can alter the control's appearance by providing FullscreenControlOptions within the fullscreenControlOptions field.
+              fullscreenControl: false,
+              // A linksControl provides guide arrows on the image for traveling to adjacent panorama images.
+              linksControl: false,
+              // A panControl provides a way to rotate the panorama. This control appears by default as a standard integrated compass and pan control. You may alter the control's position by providing PanControlOptions within the panControlOptions field.
+              panControl: false,
+              // A zoomControl provides a way to zoom within the image. This control appears by default near the bottom right of the panorama. You can alter the control's appearance by providing ZoomControlOptions within the zoomControlOptions field.
+              zoomControl: false
+
+            });
+      }
+    </script>
+    <script async defer
+         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYEbgWIgaQwVeXUjK5JULsutTcLiUIJpE&callback=initialize">
+    </script>
+  </body>
+</html>
