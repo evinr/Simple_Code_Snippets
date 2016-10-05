@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Click to Move Elements</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+<!-- 	 <script src='./resources/app.js'></script>
+    <link rel='stylesheet' type='text/css' href='./resources/style.css'> -->
+	<style type='text/css'>
+	   body {
+	   	/* BODY MUST HAVE SIZE FOR RANDO EVENT HANDLERS TO WORK */
+	   	margin: 0 auto;
+	   	width: 100vw;
+	   	height: 100vh;
+	   }
+	</style>
+</head>
+<body>
+	<div class="outer-element">
+		<div class="inner-element"></div>
+	</div>
+</body>
+
+<script>
+var mousePosition = function (event) {
+	// debugger;
+	console.log('adsfasdf')
+}
+
+var clickDown = function (event) {
+	// debugger;
+	console.log('kkklkkk')
+}
+
+
+document.body.addEventListener('mousemove',	mousePosition);
+
+// // track the movement of the mouse position
+// 	//mousemove
+// 	// document.body.addEventListener('mousemove', function(event){
+// 	// 	mousePosition(event.target.id || event.srcElement.id)
+// 	// });
+// 	document.body.addEventListener('mousemove',	mousePosition);
+
+
+// // On mouse clicking down bind the movement of the mouse to the inner-element
+// 	var mouseDown = 0;
+	document.body.addEventListener('mousedown',	clickDown);
+	// document.body.onmousedown = function() { 
+	// 	mouseDown ++
+	//   console.log("down")
+	// }
+	// document.body.onmouseup = function() {
+	//   console.log("up")
+	// }
+// On releasing the mouse button the binding from above will be removed
+	document.body.addEventListener('mouseup',	clickDown);
+// display a list of what elements have been updated and what the new styles are
+
+</script>
+</html>
