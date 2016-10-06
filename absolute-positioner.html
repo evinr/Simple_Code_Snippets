@@ -21,27 +21,44 @@
 </body>
 
 <script>
+var mouseOriginX;
+var mouseOriginY;
+
+
 var mousePosition = function (event) {
 	// debugger;
-	console.log('adsfasdf')
+	!mouseOriginY ? mouseOriginY = event.clientY: console.log("the present position is: " + event.clientY);
+	!mouseOriginX ? mouseOriginX = event.clientX: console.log("the present position is: " + event.clientX);
 }
+
+var repositionElement = function (presentX, presentY) {
+	// Set the position of the element to absolute
+
+	// Set the position of the element to the present location via clientRect
+
+	// Eact time this gets called it will need to move the element N-number of pixels, where N is the distance from mouseOriginX and presentX
+
+	// 
+} 
 
 var clickDown = function (event) {
 	// debugger;
-	console.log('kkklkkk')
 }
 
+var clickUp = function (event) {
+	// debugger;
+	document.body.removeEventListener('mousemove',	mousePosition);
 
+	mouseOriginX = null;
+	mouseOriginY = null;
+}
 document.body.addEventListener('mousemove',	mousePosition);
-
 // // track the movement of the mouse position
 // 	//mousemove
 // 	// document.body.addEventListener('mousemove', function(event){
 // 	// 	mousePosition(event.target.id || event.srcElement.id)
 // 	// });
 // 	document.body.addEventListener('mousemove',	mousePosition);
-
-
 // // On mouse clicking down bind the movement of the mouse to the inner-element
 // 	var mouseDown = 0;
 	document.body.addEventListener('mousedown',	clickDown);
@@ -53,8 +70,7 @@ document.body.addEventListener('mousemove',	mousePosition);
 	//   console.log("up")
 	// }
 // On releasing the mouse button the binding from above will be removed
-	document.body.addEventListener('mouseup',	clickDown);
+	document.body.addEventListener('mouseup',	clickUp);
 // display a list of what elements have been updated and what the new styles are
-
 </script>
 </html>
