@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trivial XML Parsing</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+<!-- 	 <script src='./resources/app.js'></script>
+    <link rel='stylesheet' type='text/css' href='./resources/style.css'> -->
+	<style type='text/css'>
+	   
+	</style>
+</head>
+<body>
+
+</body>
+
+<script>
+
+var render = function () {
+    var xhttp;
+    xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState == 4 && xhttp.status == 200) {
+            parseXmlFromCallback (xhttp.responseText)
+        }
+    }
+    xhttp.open('GET', 'http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=sf-muni&stopId=16633', true);
+    xhttp.send();
+}()
+
+var parseXmlFromCallback = function (responsePayload) {
+	parser = new DOMParser();
+	xmlDoc = parser.parseFromString(responsePayload,"text/xml");
+	// This pattern works well when the AST is consistant
+	console.log(xmlDoc.children[0].children[1].children[0].children[0].attributes.minutes.nodeValue);
+	// This is a more dynamic approach to finding all the targeted elements
+	console.log(xmlDoc.getElementsByTagName("prediction")[1].attributes.minutes.nodeValue);
+
+
+}
+
+
+</script>
+</html>
